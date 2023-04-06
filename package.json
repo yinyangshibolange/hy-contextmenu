@@ -9,7 +9,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib ./src/index.js",
-    "package": "vue-cli-service build --target lib ./src --name hy-contextmenu --dest hy-contextmenu",
+    "package": "vue-cli-service build --target lib ./src/index.js  --dest hy-contextmenu",
     "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
