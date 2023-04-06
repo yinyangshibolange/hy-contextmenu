@@ -1,4 +1,5 @@
-import {createRightMenu} from './package/menu'
+import {createRightMenu} from './package/menu.js'
+import "./package/menu.scss"
  
 // 注册
 const install = function(Vue){
