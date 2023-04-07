@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"><title>hycontextmenu demo</title>
+    <script src="../lib/hycontextmenu.umd.js"></script>
+    <link rel="stylesheet" href="../lib/hycontextmenu.css">
+    <style>
+        html,body,#context-menu {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+<div id="context-menu"></div>
+<script>
+    const data = [
+        {
+            icon_class: "iconfont icon-tongbu",
+            text: "同步到服务器",
+            click: (item, ev, el) => {
+                console.log("同步到服务器", item);
+            },
+        },
+        {
+            icon_class: "",
+            text: "hover",
+            border_top: true,
+            click: (item, ev, el) => {
+                console.log("hover", item);
+            },
+            trigger: 'hover',
+            children: [{
+                icon_class: "",
+                text: "click",
+                trigger: 'click',
+                children: [{
+                    icon_class: "iconfont icon-zhongmingming",
+                    text: "重命名",
+                    click: (item, ev, el) => {
+                        console.log("重命名", item);
+                    },
+                },
+                    {
+                        icon_class: "iconfont icon-changyonggoupiaorenshanchu",
+                        text: "删除",
+                        click: (item, ev, el) => {
+                            console.log("删除", item);
+                        },
+                    },
+                    {
+                        icon_class: "iconfont icon-zitiyulan",
+                        text: "预览",
+                        click: (item, ev, el) => {
+                            console.log("预览", item);
+                        },
+                    },]
+            },]
+        },
+        {
+            icon_class: "",
+            text: "click",
+            click: (item, ev, el) => {
+                console.log("click", item);
+            },
+            trigger: 'click',
+            children: [{
+                icon_class: "",
+                text: "hover",
+                trigger: 'hover',
+                children: [{
+                    icon_class: "iconfont icon-zhongmingming",
+                    text: "重命名",
+                    click: (item, ev, el) => {
+                        console.log("重命名", item);
+                    },
+                },
+                    {
+                        icon_class: "iconfont icon-changyonggoupiaorenshanchu",
+                        text: "删除",
+                        border_top: true,
+                        click: (item, ev, el) => {
+                            console.log("删除", item);
+                        },
+                    },
+                    {
+                        icon_class: "iconfont icon-zitiyulan",
+                        text: "预览",
+                        border_top: true,
+                        click: (item, ev, el) => {
+                            console.log("预览", item);
+                        },
+                    },]
+            },]
+        },
+        {
+            icon_class: "iconfont icon-jianqie",
+            text: "剪切",
+            click: (item, ev, el) => {
+                console.log("剪切", item);
+            },
+        },
+
+        {
+            icon_class: "iconfont icon-nav_icon_fabuguanli",
+            text: "发布",
+            children: [{
+                icon_class: "iconfont icon-nav_icon_fabuguanli",
+                text: "发布到安卓",
+                click: (item, ev, el) => {
+                    console.log("发布到安卓", item);
+                }
+            }, {
+                icon_class: "iconfont icon-nav_icon_fabuguanli",
+                text: "发布到ios",
+                click: (item, ev, el) => {
+                    console.log("发布到ios", item);
+                }
+            },]
+        },
+        {
+            icon_class: "iconfont icon-zhuti_tiaosepan",
+            text: "方案切换",
+            border_top: true,
+            // selector: true,
+            trigger: 'hover',
+            children: [{
+                icon_class: "iconfont icon-light",
+                text: "light",
+                selector: true,
+                group: 'theme',
+                checked: true,
+                click: (item, ev, el) => {
+                    this.theme = item.text
+                    console.log("light", item);
+                }
+            }, {
+                icon_class: "iconfont icon-dark",
+                text: "dark",
+                selector: true,
+                group: 'theme',
+                click: (item, ev, el) => {
+                    this.theme = item.text
+                    console.log("dark", item);
+                }
+            },]
+        },
+        {
+            icon_class: "iconfont icon-computer",
+            text: "显示",
+            // selector: true,
+            // multiple: true,
+            trigger: 'hover',
+            click: (item, ev, el) => {
+                console.log("显示", item)
+            },
+            children: [{
+                icon_class: "",
+                text: "显示工具栏",
+                selector: true,
+                checked: true,
+                click: (item, ev, el) => {
+                    this.show_toolbar = item.checked
+                    console.log("显示工具栏", item);
+                }
+            }, {
+                icon_class: "",
+                text: "显示编辑器",
+                selector: true,
+                click: (item, ev, el) => {
+                    this.show_editor = item.checked
+                    console.log("显示编辑器", item);
+                }
+            }, {
+                icon_class: "",
+                text: "显示终端",
+                selector: true,
+                click: (item, ev, el) => {
+                    this.show_cmd = item.checked
+                    console.log("显示终端", item);
+                }
+            }]
+        },
+        {
+            icon_class: "iconfont icon-computer",
+            text: "显示(点击后不关闭)",
+            custom_style: {
+                backgroundColor: '#000',
+                color: '#fff',
+            },
+            trigger: 'hover',
+            click: (item, ev, el) => {
+                console.log("显示", item)
+            },
+            children: [{
+                icon_class: "",
+                text: "显示工具栏",
+                selector: true,
+                checked: true,
+                click_keep: true,
+                click: (item, ev, el) => {
+                    this.show_toolbar = item.checked
+                    console.log("显示工具栏", item);
+                }
+            }, {
+                icon_class: "",
+                text: "显示编辑器",
+                selector: true,
+                click_keep: true,
+                click: (item, ev, el) => {
+                    this.show_editor = item.checked
+                    console.log("显示编辑器", item);
+                }
+            }, {
+                icon_class: "",
+                text: "显示终端",
+                selector: true,
+                click_keep: true,
+                click: (item, ev, el) => {
+                    this.show_cmd = item.checked
+                    console.log("显示终端", item);
+                }
+            }]
+        },
+    ]
+    document.body.oncontextmenu = function(ev) {
+        ev.preventDefault()
+        const {clientX, clientY} = ev
+        createRightMenu(clientX, clientY, data)
+    }
+</script>
+</body>
+
+</html>

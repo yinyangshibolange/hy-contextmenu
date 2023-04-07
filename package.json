@@ -8,12 +8,12 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib ./src/index.js",
-    "package": "vue-cli-service build --target lib ./src/index.js  --dest hy-contextmenu",
+    "build": "vue-cli-service build --target lib src/origin.js",
+    "package": "vue-cli-service build --target lib src/origin.js  --dest lib --name hycontextmenu",
     "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "main": "dist/hy-contextmenu.umd.js",
+  "main": "lib/hycontextmenu.umd.js",
   "dependencies": {
     "core-js": "^3.8.3",
     "vue": "^2.6.14"
