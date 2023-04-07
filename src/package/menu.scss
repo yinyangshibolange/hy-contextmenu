@@ -1,5 +1,18 @@
 :root {
-  --menu-background: "#fff";
+  --menu-padding: 0; // 菜单总padding
+  --menu-shadow: 0 0 20px rgba(0,0,0,0.2); // 菜单阴影
+  --animation-duration: 0.3s; // 渐隐渐现和菜单移动持续时间
+  --menu-border-radius: 5px; // 菜单的圆角
+
+  --menu-background: "#af1f2f"; // 默认菜单背景色
+  // 主题
+  .custom_menu_div[theme="light"] {
+    --menu-background: "#fff";
+  }
+
+  .custom_menu_div[theme="dark"] {
+    --menu-background: "#000";
+  }
 }
 
 @keyframes up-center {
@@ -18,16 +31,16 @@
   padding: 0;
   overflow: hidden;
   user-select: none;
-  animation: up-center .3s ease-in-out;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  transition: all .3s ease-in-out;
+  animation: up-center var(--animation-duration) ease-in-out;
+  box-shadow: var(--menu-shadow);
+  transition: all var(--animation-duration) ease-in-out;
+  border-radius: var(--menu-border-radius);
+  background-color: var(--menu-background);
 
   & > ul {
     margin: 0;
     padding: 0;
     list-style: none;
-    background: #fff;
-    border-radius: 5px;
     overflow: hidden;
     position: relative;
 

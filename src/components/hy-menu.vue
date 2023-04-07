@@ -23,7 +23,6 @@ export default {
             show_cmd: false,
             menu_items: [
                 {
-                    // icon_class: "iconfont icon-tongbu",
                     icon_img: require("../static/sync.png"),
                     text: "同步到服务器",
                     click: (item, ev, el) => {
@@ -156,8 +155,7 @@ export default {
                 {
                     icon_class: "iconfont icon-computer",
                     text: "显示",
-                    // selector: true,
-                    // multiple: true,
+                    custom_class: "custom_li my_li",
                     trigger: 'hover',
                     click: (item, ev, el) => {
                         console.log("显示", item)
@@ -237,7 +235,7 @@ export default {
         openCustomMenu(ev) {
             ev.preventDefault();
             const {clientX, clientY} = ev
-            this.$createRightMenu(clientX,  clientY, this.menu_items);
+            this.$createRightMenu(clientX,  clientY, this.menu_items, );
         }
     }
 }

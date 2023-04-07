@@ -4,6 +4,7 @@
     <meta charset="utf-8"><title>hycontextmenu demo</title>
     <script src="../lib/hycontextmenu.umd.js"></script>
     <link rel="stylesheet" href="../lib/hycontextmenu.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3809364_596mihgkcwh.css">
     <style>
         html,body,#context-menu {
             width: 100%;
@@ -229,7 +230,7 @@
     document.body.oncontextmenu = function(ev) {
         ev.preventDefault()
         const {clientX, clientY} = ev
-        createRightMenu(clientX, clientY, data)
+        createRightMenu(clientX, clientY, data, )
     }
 </script>
 </body>

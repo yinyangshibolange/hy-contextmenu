@@ -1,5 +1,15 @@
 :root {
+  --menu-padding: 0;
+  --menu-shadow: 0 0 20px rgba(0,0,0,0.2);
+  --animation-duration: 0.3s;
+  --menu-border-radius: 5px;
+  --menu-background: "#af1f2f";
+}
+:root .custom_menu_div[theme=light] {
   --menu-background: "#fff";
+}
+:root .custom_menu_div[theme=dark] {
+  --menu-background: "#000";
 }
 
 @keyframes up-center {
@@ -16,16 +26,16 @@
   padding: 0;
   overflow: hidden;
   user-select: none;
-  animation: up-center 0.3s ease-in-out;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
+  animation: up-center var(--animation-duration) ease-in-out;
+  box-shadow: var(--menu-shadow);
+  transition: all var(--animation-duration) ease-in-out;
+  border-radius: var(--menu-border-radius);
+  background-color: var(--menu-background);
 }
 .custom_menu_div > ul {
   margin: 0;
   padding: 0;
   list-style: none;
-  background: #fff;
-  border-radius: 5px;
   overflow: hidden;
   position: relative;
 }

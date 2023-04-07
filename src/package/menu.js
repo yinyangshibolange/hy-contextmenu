@@ -9,7 +9,8 @@ export function createRightMenu(x, y, menu_items, level = 0, type = 'right_click
     })
     const menu_container = menu_containers[level].el
     document.body.appendChild(menu_container)
-    menu_container.classList && menu_container.classList.add("custom_menu_div")
+    menu_container.classList.add("custom_menu_div")
+    // menu_container.classList.add("custom_menu_div")
     menu_container.style.zIndex = 99999
 
     let menu_ul = document.createElement("ul")
@@ -20,9 +21,16 @@ export function createRightMenu(x, y, menu_items, level = 0, type = 'right_click
             const menu_lis = document.createElement("li")
             menu_lis.id = `li-${level}-${index}`
             menu_lis.classList.add("menu-ul-li")
-            if(typeof item.custom_style === 'object') {
-                for(const key in item.custom_style) {
+            if (typeof item.custom_style === 'object') {
+                for (const key in item.custom_style) {
                     menu_lis.style[key] = item.custom_style[key]
+                }
+            }
+            if (item.custom_class) {
+                if (item.custom_class.split) {
+                    item.custom_class.split(" ").forEach(item => {
+                        menu_lis.classList.add(item.trim())
+                    })
                 }
             }
             if (item.border_top) {
@@ -37,9 +45,9 @@ export function createRightMenu(x, y, menu_items, level = 0, type = 'right_click
                     i_dom.classList.add(item.trim())
                 })
                 i_container_div.appendChild(i_dom)
-            } else if(item.icon_img) {
+            } else if (item.icon_img) {
                 const i_dom = document.createElement("img")
-                i_dom.src=item.icon_img
+                i_dom.src = item.icon_img
                 i_container_div.appendChild(i_dom)
             }
 
@@ -71,95 +79,94 @@ export function createRightMenu(x, y, menu_items, level = 0, type = 'right_click
             div_dom.innerText = item.text
 
 
-
-                if (item.children) {
-                    const trigger = item.trigger || 'click' // 触发方式
-                    if (trigger === 'hover') {
-                        menu_lis.onmouseenter = (ev) => {
-                            ev.stopPropagation()
-                            ev.preventDefault()
-
-                            const li_el = getLiElement(ev.target, "menu-ul-li")
-                            const {top, right} = li_el.getBoundingClientRect()
-
-                            createRightMenu(right, top, item.children, level + 1, 'hover')
-                        }
-
-                        menu_lis.onclick = (ev) => {
-                            ev.stopPropagation()
-                            ev.preventDefault()
-
-                            if (typeof item.click === 'function') {
-                                item.click(item, ev, menu_lis)
-                            }
-                        }
-                    } else if (trigger === 'click') {
-                        menu_lis.onmouseenter = (ev) => {
-                            ev.stopPropagation()
-                            ev.preventDefault()
-                            popMenu(level + 1,)
-                        }
-
-                        menu_lis.onclick = (ev) => {
-                            ev.stopPropagation()
-                            ev.preventDefault()
-
-                            const li_el = getLiElement(ev.target, "menu-ul-li")
-                            const {top, right} = li_el.getBoundingClientRect()
-
-                            createRightMenu(right, top, item.children, level + 1, 'click')
-
-                            if (typeof item.click === 'function') {
-                                item.click(item, ev, menu_lis)
-                            }
-                        }
-                    }
-                } else {
+            if (item.children) {
+                const trigger = item.trigger || 'click' // 触发方式
+                if (trigger === 'hover') {
                     menu_lis.onmouseenter = (ev) => {
                         ev.stopPropagation()
                         ev.preventDefault()
-                        popMenu(level + 1)
+
+                        const li_el = getLiElement(ev.target, "menu-ul-li")
+                        const {top, right} = li_el.getBoundingClientRect()
+
+                        createRightMenu(right, top, item.children, level + 1, 'hover')
                     }
+
                     menu_lis.onclick = (ev) => {
                         ev.stopPropagation()
                         ev.preventDefault()
 
-                        // 选项没有 子的
-                        // menu_items // 父所有节点
-
-                        if (item.selector) { // 如果可选，那么
-                            if (item.group) { // 如果有组，那么就是单选，没有组就是可以多选
-                                menu_items.forEach((item_1, index_1) => {
-                                    if (item_1.group === item.group) {
-                                        const el = document.getElementById(`li-${level}-${index_1}`)
-                                        item_1.checked = false
-                                        el.classList.remove("li-checked")
-                                    }
-                                })
-                                item.checked = true
-                                menu_lis.classList.add("li-checked")
-                            } else {
-                                item.checked = !item.checked
-                                if (item.checked) {
-                                    menu_lis.classList.add("li-checked")
-                                } else {
-                                    menu_lis.classList.remove("li-checked")
-                                }
-                            }
+                        if (typeof item.click === 'function') {
+                            item.click(item, ev, menu_lis)
                         }
+                    }
+                } else if (trigger === 'click') {
+                    menu_lis.onmouseenter = (ev) => {
+                        ev.stopPropagation()
+                        ev.preventDefault()
+                        popMenu(level + 1,)
+                    }
 
+                    menu_lis.onclick = (ev) => {
+                        ev.stopPropagation()
+                        ev.preventDefault()
+
+                        const li_el = getLiElement(ev.target, "menu-ul-li")
+                        const {top, right} = li_el.getBoundingClientRect()
+
+                        createRightMenu(right, top, item.children, level + 1, 'click')
 
                         if (typeof item.click === 'function') {
                             item.click(item, ev, menu_lis)
                         }
-                        if (!item.click_keep) {
-                            popMenu(0)
-                            document.onclick = null
-                        }
-
-
                     }
                 }
+            } else {
+                menu_lis.onmouseenter = (ev) => {
+                    ev.stopPropagation()
+                    ev.preventDefault()
+                    popMenu(level + 1)
+                }
+                menu_lis.onclick = (ev) => {
+                    ev.stopPropagation()
+                    ev.preventDefault()
+
+                    // 选项没有 子的
+                    // menu_items // 父所有节点
+
+                    if (item.selector) { // 如果可选，那么
+                        if (item.group) { // 如果有组，那么就是单选，没有组就是可以多选
+                            menu_items.forEach((item_1, index_1) => {
+                                if (item_1.group === item.group) {
+                                    const el = document.getElementById(`li-${level}-${index_1}`)
+                                    item_1.checked = false
+                                    el.classList.remove("li-checked")
+                                }
+                            })
+                            item.checked = true
+                            menu_lis.classList.add("li-checked")
+                        } else {
+                            item.checked = !item.checked
+                            if (item.checked) {
+                                menu_lis.classList.add("li-checked")
+                            } else {
+                                menu_lis.classList.remove("li-checked")
+                            }
+                        }
+                    }
+
+
+                    if (typeof item.click === 'function') {
+                        item.click(item, ev, menu_lis)
+                    }
+                    if (!item.click_keep) {
+                        popMenu(0)
+                        document.onclick = null
+                    }
+
+
+                }
+            }
 
 
         })
@@ -174,7 +181,7 @@ export function createRightMenu(x, y, menu_items, level = 0, type = 'right_click
     menu_container.style.left = x + 'px'
     menu_container.style.top = y + 'px'
 
-        resizeMenu()
+    resizeMenu()
 
 
     if (level === 0) {
