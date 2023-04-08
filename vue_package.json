@@ -1,0 +1,49 @@
+{
+  "name": "hy-contextmenu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "多级右键菜单，带选项选择，可多选，单选",
+  "author": {
+    "name": "hy"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --dest html",
+    "package": "vue-cli-service build --target lib src/origin.js  --dest lib --name hycontextmenu",
+    "lint": "vue-cli-service lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "lib/hycontextmenu.umd.js",
+  "dependencies": {
+    "core-js": "^3.8.3",
+    "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "vue-template-compiler": "^2.6.14",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^7.3.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "_id": "hy-contextmenu@1.0.0",
+  "bugs": {
+    "url": "https://github.com/yinyangshibolange/hy-contextmenu/issues"
+  },
+  "homepage": "https://github.com/yinyangshibolange/hy-contextmenu#readme",
+  "keywords": [
+    "右键菜单，选择器，多选，单选"
+  ],
+  "license": "ISC",
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yinyangshibolange/hy-contextmenu.git"
+  },
+  "files": ["lib/", "README.md", "package.json"]
+}

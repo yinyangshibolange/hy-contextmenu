@@ -82,6 +82,12 @@ yarn install
 ## demo
 demo仓库地址：<https://github.com/yinyangshibolange/hy-contextmenu>
 
+demo运行方式：
+1. 克隆github仓库
+2. 删除package.json文件，将vue_package.json重命名为package.json
+3. 运行yarn或者npm i
+4. 运行yarn serve 或者 npm run serve
+
 在线预览地址：<https://yinyangshibolange.github.io/hy-contextmenu/html/>
 
 demo中的配置项

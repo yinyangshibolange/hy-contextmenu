@@ -10,3 +10,4 @@ babel.config.js
 jsconfig.json
 vue.config.js
 yarn.lock
+vue_package.json
