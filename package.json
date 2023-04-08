@@ -44,5 +44,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yinyangshibolange/hy-contextmenu.git"
-  }
+  },
+  "files": ["lib/", "README.md", "package.json"]
 }

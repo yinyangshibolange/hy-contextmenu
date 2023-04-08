@@ -1,0 +1,12 @@
+.git/
+.idea/
+html/
+html_demo/
+node_modules/
+src/
+.gitignore
+.npmignore
+babel.config.js
+jsconfig.json
+vue.config.js
+yarn.lock
