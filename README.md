@@ -9,11 +9,11 @@
 ## 安装方式
 
 1. npm/yarn方式安装
-```  
+```shell
 npm run install  
 or  
 yarn install  
-```  b
+```
 
 2. cdn方式
 ```html
@@ -259,6 +259,8 @@ const menu_list = [
 ```html  
 <script src="https://cdn.jsdelivr.net/gh/yinyangshibolange/hy-contextmenu/lib/hycontextmenu.umd.js"></script>  
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yinyangshibolange/hy-contextmenu/lib/hycontextmenu.css">
+
+<!-- 如果cdn链接失效，那就把项目https://github.com/yinyangshibolange/hy-contextmenu下载下来，然后引入lib下的umd.js和css -->
 <body>
 <div id="ctx_menu"></div>
 </body>
