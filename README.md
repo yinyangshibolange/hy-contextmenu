@@ -59,7 +59,7 @@ yarn install
 
 
   // 主题
-  .custom_menu_div,.custom_menu_div[theme="light"] {
+  .custom_menu_div,.custom_menu_div[theme="light"],.custom_menu_div[theme="default"] {
     --menu-background-color: #fff; // 默认背景色
     --menu-background-hover-color: #f2f2f2; // 默认高亮色
     --menu-border-top: 1px solid #e2e2e2; // 默认分割线

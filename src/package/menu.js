@@ -11,7 +11,6 @@ export function createRightMenu(x, y, menu_items, theme = 'default', level = 0, 
     const menu_container = menu_containers[level].el
     document.body.appendChild(menu_container)
     menu_container.classList.add("custom_menu_div")
-    // menu_container.classList.add("custom_menu_div")
     menu_container.style.zIndex = 99999
     if(level === 0) {
         current_theme = theme || 'default'
@@ -68,8 +67,6 @@ export function createRightMenu(x, y, menu_items, theme = 'default', level = 0, 
             menu_lis.appendChild(div_right_dom)
 
             // 右边箭头或者check勾
-
-
             if (Array.isArray(item.children) && item.children.length > 0) {
                 div_right_dom.classList.add("i-right")
             } else {
@@ -79,7 +76,6 @@ export function createRightMenu(x, y, menu_items, theme = 'default', level = 0, 
             if (item.checked) {
                 menu_lis.classList.add("li-checked")
             }
-
 
             menu_ul.appendChild(menu_lis)
             div_dom.innerText = item.text
@@ -182,18 +178,12 @@ export function createRightMenu(x, y, menu_items, theme = 'default', level = 0, 
 
 
     // 控制菜单出现位置，防止 跳出窗口外
-
-
     menu_container.style.left = x + 'px'
     menu_container.style.top = y + 'px'
-
     resizeMenu()
-
-
     if (level === 0) {
         documentClickSet()
     }
-
     return {
         setTheme: setMenuTheme
     }
