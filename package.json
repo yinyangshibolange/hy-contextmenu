@@ -8,7 +8,7 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib src/origin.js",
+    "build": "vue-cli-service build --dest doc",
     "package": "vue-cli-service build --target lib src/origin.js  --dest lib --name hycontextmenu",
     "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1"
