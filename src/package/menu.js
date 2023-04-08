@@ -253,23 +253,17 @@ function resizeMenu() {
     const {width: window_width, height: window_height} = getWindowSize()
     const last_menu = menu_containers[menu_containers.length - 1]
     const {right, bottom} = last_menu.el.getBoundingClientRect()
-    console.log(right)
-    console.log(bottom)
 
-    console.log(window_width, window_height)
 
     if (right > window_width) {
-        console.log('right > window_width')
         for (let i = 0; i < menu_containers.length; i++) {
             const {left,} = menu_containers[i].el.getBoundingClientRect()
             menu_containers[i].el.style.right = 'auto'
-            console.log(right - window_width)
             menu_containers[i].el.style.left = left - (right - window_width) + 'px'
         }
     }
 
     if (bottom > window_height) {
-        console.log('bottom > window_height')
         for (let i = 0; i < menu_containers.length; i++) {
             const {top} = menu_containers[i].el.getBoundingClientRect()
             menu_containers[i].el.style.bottom = 'auto'
