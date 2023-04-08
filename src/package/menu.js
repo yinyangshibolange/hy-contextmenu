@@ -1,6 +1,7 @@
 let menu_containers = []
+let current_theme = 'default'
 
-export function createRightMenu(x, y, menu_items, level = 0, type = 'right_click') {
+export function createRightMenu(x, y, menu_items, theme = 'default', level = 0, type = 'right_click') {
     popMenu(level)
     menu_containers.push({
         el: document.createElement("div"),
@@ -12,6 +13,11 @@ export function createRightMenu(x, y, menu_items, level = 0, type = 'right_click
     menu_container.classList.add("custom_menu_div")
     // menu_container.classList.add("custom_menu_div")
     menu_container.style.zIndex = 99999
+    if(level === 0) {
+        current_theme = theme || 'default'
+    }
+    menu_container.setAttribute("theme", current_theme)
+
 
     let menu_ul = document.createElement("ul")
     menu_container.appendChild(menu_ul)
@@ -89,7 +95,7 @@ export function createRightMenu(x, y, menu_items, level = 0, type = 'right_click
                         const li_el = getLiElement(ev.target, "menu-ul-li")
                         const {top, right} = li_el.getBoundingClientRect()
 
-                        createRightMenu(right, top, item.children, level + 1, 'hover')
+                        createRightMenu(right, top, item.children,theme, level + 1, 'hover')
                     }
 
                     menu_lis.onclick = (ev) => {
@@ -114,7 +120,7 @@ export function createRightMenu(x, y, menu_items, level = 0, type = 'right_click
                         const li_el = getLiElement(ev.target, "menu-ul-li")
                         const {top, right} = li_el.getBoundingClientRect()
 
-                        createRightMenu(right, top, item.children, level + 1, 'click')
+                        createRightMenu(right, top, item.children,theme, level + 1, 'click')
 
                         if (typeof item.click === 'function') {
                             item.click(item, ev, menu_lis)
@@ -187,6 +193,19 @@ export function createRightMenu(x, y, menu_items, level = 0, type = 'right_click
     if (level === 0) {
         documentClickSet()
     }
+
+    return {
+        setTheme: setMenuTheme
+    }
+}
+
+function setMenuTheme(theme) {
+        current_theme = theme
+        if(menu_containers.length > 0) {
+            menu_containers.forEach(item=> {
+                item.el.setAttribute("theme", theme)
+            })
+        }
 }
 
 function documentClickSet() {

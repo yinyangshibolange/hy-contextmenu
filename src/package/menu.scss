@@ -1,12 +1,8 @@
 :root {
   --menu-padding: 0; // 菜单总padding
-  --menu-shadow: 0 0 20px rgba(0,0,0,0.2); // 菜单阴影
   --animation-duration: 0.3s; // 渐隐渐现和菜单移动持续时间
   --menu-border-radius: 5px; // 菜单的圆角
 
-  --menu-background-color: #fff; // 默认菜单背景色
-  --menu-background-hover-color: #f2f2f2;
-  --menu-border-top: 1px solid #e2e2e2;
 
   --menu-li-left-width: 32px; // li 左侧div占用宽度
   --menu-li-left-size: 16px; // li 左侧图标尺寸
@@ -15,20 +11,30 @@
   --menu-right-size: 32px; // li 右边div占用宽度
   --menu-right-i-size: 20px; // li 右边图标尺寸
 
-  // li
   --li-min-width: 177px; // li最小宽度
   --li-height: 50px; // li高度
 
 
   // 主题
-  .custom_menu_div[theme="light"] {
-    --menu-background: #fff;
+  .custom_menu_div,.custom_menu_div[theme="light"] {
+    --menu-background-color: #fff; // 默认背景色
+    --menu-background-hover-color: #f2f2f2; // 默认高亮色
+    --menu-border-top: 1px solid #e2e2e2; // 默认分割线
+    --li-color: #000; // 默认元素颜色
+    --menu-shadow: 0 0 20px rgba(0,0,0,0.2); // 菜单阴影
   }
 
+  // 黑色主题
   .custom_menu_div[theme="dark"] {
-    --menu-background: #000;
+    --menu-background-color: #000; // 背景色
+    --menu-background-hover-color: #666; // 高亮色
+    --menu-border-top: 1px solid #666; // 分割线
+    --li-color: #fff; // 元素颜色
+    --menu-shadow: 0 0 20px rgba(255,255,255,0.2); // 菜单阴影
   }
 }
+
+
 
 @keyframes up-center {
   0% {
@@ -71,6 +77,7 @@
       display: flex;
       align-items: center;
       white-space: nowrap;
+      color: var(--li-color);
 
       &.border-top {
         border-top: var(--menu-border-top);

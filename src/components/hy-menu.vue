@@ -17,6 +17,7 @@
 export default {
     data() {
         return {
+            ctx_menu: null, //
             theme: 'light',
             show_toolbar: true,
             show_editor: false,
@@ -189,7 +190,7 @@ export default {
                 },
                 {
                     icon_class: "iconfont icon-computer",
-                    text: "显示(点击后不关闭)",
+                    text: "主题切换(点击后不关闭)",
                     custom_style: {
                         backgroundColor: '#000',
                         color: '#fff',
@@ -199,43 +200,41 @@ export default {
                         console.log("显示", item)
                     },
                     children: [{
-                        icon_class: "",
-                        text: "显示工具栏",
+                        icon_class: "iconfont icon-light",
+                        text: "light",
                         selector: true,
+                        group: 'theme',
                         checked: true,
                         click_keep: true,
                         click: (item, ev, el) => {
-                            this.show_toolbar = item.checked
-                            console.log("显示工具栏", item);
+                            this.theme = item.text
+                            console.log("light", item);
                         }
                     }, {
-                        icon_class: "",
-                        text: "显示编辑器",
+                        icon_class: "iconfont icon-dark",
+                        text: "dark",
                         selector: true,
+                        group: 'theme',
                         click_keep: true,
                         click: (item, ev, el) => {
-                            this.show_editor = item.checked
-                            console.log("显示编辑器", item);
+                            this.theme = item.text
+                            console.log("dark", item);
                         }
-                    }, {
-                        icon_class: "",
-                        text: "显示终端",
-                        selector: true,
-                        click_keep: true,
-                        click: (item, ev, el) => {
-                            this.show_cmd = item.checked
-                            console.log("显示终端", item);
-                        }
-                    }]
+                    },]
                 },
             ]
         }
+    },
+    watch: {
+      theme(val) {
+          if(this.ctx_menu) this.ctx_menu.setTheme(val )
+      }
     },
     methods: {
         openCustomMenu(ev) {
             ev.preventDefault();
             const {clientX, clientY} = ev
-            this.$createRightMenu(clientX,  clientY, this.menu_items, );
+            this.ctx_menu = this.$createRightMenu(clientX,  clientY, this.menu_items,);
         }
     }
 }
