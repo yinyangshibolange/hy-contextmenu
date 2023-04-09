@@ -25,5 +25,5 @@
     "type": "git",
     "url": "git+https://github.com/yinyangshibolange/hy-contextmenu.git"
   },
-  "files": ["lib/", "README.md", "package.json"]
+  "files": ["lib/hycontextmenu.css","hycontextmenu.umd.min.js", "README.md", "package.json"]
 }
