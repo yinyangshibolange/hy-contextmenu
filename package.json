@@ -1,17 +1,17 @@
 {
   "name": "hy-contextmenu",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "多级右键菜单，带选项选择，可多选，单选,可自定义主题",
   "author": {
     "name": "hy"
   },
-  "main": "lib/hycontextmenu.umd.js",
+  "main": "lib/hycontextmenu.umd.min.js",
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
   ],
-  "_id": "hy-contextmenu@1.0.1",
+  "_id": "hy-contextmenu@1.0.3",
   "bugs": {
     "url": "https://github.com/yinyangshibolange/hy-contextmenu/issues"
   },
