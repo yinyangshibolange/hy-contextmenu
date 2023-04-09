@@ -1,6 +1,6 @@
 # hy-contextmenu
 
-![fgh1.gif](/src/static/shotscreen.png)
+![展示图](https://yinyangshibolange.github.io/hy-contextmenu/src/static/shotscreen.png)
 
 > 多级右键菜单，带选项选择，可多选，单选  ，兼容任意web程序。 
 > 

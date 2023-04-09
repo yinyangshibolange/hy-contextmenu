@@ -1,6 +1,6 @@
 {
   "name": "hy-contextmenu",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "多级右键菜单，带选项选择，可多选，单选,可自定义主题",
   "author": {
     "name": "hy"
@@ -11,7 +11,7 @@
     "last 2 versions",
     "not dead"
   ],
-  "_id": "hy-contextmenu@1.0.3",
+  "_id": "hy-contextmenu@1.1.0",
   "bugs": {
     "url": "https://github.com/yinyangshibolange/hy-contextmenu/issues"
   },
