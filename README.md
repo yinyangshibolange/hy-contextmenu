@@ -4,15 +4,15 @@
 
 > 多级右键菜单，带选项选择，可多选，单选  ，兼容任意web程序。 
 > 
-> 当前版本：v1.1.1
+> 当前版本：v1.1.2
 
 ## 安装方式
 
 1. npm/yarn方式安装
 ```shell
-npm run install  
+npm install hy-contextmenu --save
 or  
-yarn install  
+yarn add hy-contextmenu
 ```
 
 2. cdn方式
